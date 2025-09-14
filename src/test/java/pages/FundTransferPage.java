@@ -2,8 +2,13 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class FundTransferPage {
 
@@ -40,12 +45,25 @@ public class FundTransferPage {
 
     public void submitTransfer(){
         driver.findElement(submitButton).click();
+        System.out.println(driver.getPageSource());
+
     }
+
+
 
 
     public void verifyTransferMessage(String expectedMessage) {
-        String actualMessage = driver.findElement(By.xpath("//input[@class='title']")).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("showResult")));
+
+        String actualMessage = driver.findElement(By.xpath("//div[@id='showResult']//h1[@class='title']")).getText();
+
         Assert.assertEquals("mismatch", expectedMessage, actualMessage);
     }
+
+
+
+
 }
 

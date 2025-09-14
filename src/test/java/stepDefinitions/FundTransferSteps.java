@@ -37,7 +37,8 @@ public class FundTransferSteps {
     }
 
     @Then("User should see {string} message")
-    public void user_should_see_message(String expectedMessage) {
+    public void user_should_see_message(String expectedMessage) throws InterruptedException {
+
         fundTransferPage.verifyTransferMessage(expectedMessage);
     }
 
