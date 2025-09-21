@@ -23,24 +23,29 @@ public class FundTransferPage {
         this.driver = driver;
     }
 
+
     public void goToFundTransferPage() {
-        driver.findElement(By.linkText("Transfer Funds")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Transfer Funds"))).click();
     }
+
 
     public void enterAmount(String amount) {
         driver.findElement(amountField).clear();
         driver.findElement(amountField).sendKeys(amount);
     }
 
-    public void selectFromAccount(String fromAcc) {
+
+    public void selectFromAccount() {
         Select fromDropdown = new Select(driver.findElement(fromAccountSelect));
-        fromDropdown.selectByVisibleText(fromAcc);
+        fromDropdown.selectByIndex(0); // selects the first option
     }
 
-    public void selectToAccount(String toAcc) {
+    public void selectToAccount() {
         Select toDropdown = new Select(driver.findElement(toAccountSelect));
-        toDropdown.selectByVisibleText(toAcc);
+        toDropdown.selectByIndex(0); // selects the first option
     }
+
 
 
     public void submitTransfer(){

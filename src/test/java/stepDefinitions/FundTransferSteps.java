@@ -24,12 +24,14 @@ public class FundTransferSteps {
         fundTransferPage.goToFundTransferPage();
     }
 
-    @When("User enters amount {string} and selects from account {string} to account {string}")
-    public void user_enters_amount_and_selects_from_account_to_account(String amount, String fromAcc, String toAcc) {
+
+    @When("User enters amount {string} and selects accounts automatically")
+    public void user_enters_amount_and_selects_accounts_automatically(String amount) {
         fundTransferPage.enterAmount(amount);
-        fundTransferPage.selectFromAccount(fromAcc);
-        fundTransferPage.selectToAccount(toAcc);
+        fundTransferPage.selectFromAccount();
+        fundTransferPage.selectToAccount();
     }
+
 
     @When("Clicks on submit transfer")
     public void clicks_on_submit_transfer(){
