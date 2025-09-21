@@ -11,7 +11,7 @@ Feature: User Registration
       | zipCode   | 11111       |
       | phone     | 9876543210  |
       | ssn       | 123-45-6789 |
-      | username  | Binusha111  |
+      | username  | Binusha900  |
       | password  | 303030      |
     And Clicks on register
-    Then User should see registration message "Welcome Binusha111"
+    Then User should see registration message "Welcome Binusha900"
